@@ -1,5 +1,6 @@
 <?php namespace Maatwebsite\Excel\Readers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Facades\Queue;
@@ -975,7 +976,7 @@ class LaravelExcelReader
     {
         $this->formatDates = true;
         $columns           = func_get_args();
-        $this->dateColumns = array_merge($this->dateColumns, array_flatten($columns));
+        $this->dateColumns = array_merge($this->dateColumns, Arr::flatten($columns));
 
         return $this;
     }
